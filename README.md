@@ -14,6 +14,7 @@ Original dataset has 74,111 instances and 29 features including target variables
 ## Data Pre-processing:
 
 During the initial Exploration, we found out there were some issues with original dataset such as missing values, non-English characters in description field and mismatching datatypes. 
+
 *	Some of the fields in dataset had missing values as shown in Table 5 in Appendix. We handled missing values in below 2 ways:
 >*	Removed rows which had missing values.
 >*	Host_response_rate which is one of the important features in determining review_scores_rating, had 18299 missing values. Rather than removing missing values, we imputed those values using median of the field.
@@ -50,26 +51,28 @@ We added some external data to bring in more transport and attraction features w
 ### Methodology
 Since the listing price is continuous in nature, we used linear as well as tree based regressors to build prediction models. 
   Below are the models we evaluated to predict the listing price:
-•	Linear Regression 
->•	Base Model (with Raw Data)
->•	Base Model + Amenities
->•	Base Model + Amenities + Description Related Fields
->•	Base Model + Amenities + Description Related Fields + Distances
-•	Random Forest Regressor
-•	SVM Regressor
->•	Linear Kernel
->•	rbf Kernel
->•	Polynomial Kernel
-•	Light GBM Regressor
+
+*	Linear Regression 
+>*	Base Model (with Raw Data)
+>*	Base Model + Amenities
+>*	Base Model + Amenities + Description Related Fields
+>*	Base Model + Amenities + Description Related Fields + Distances
+*	Random Forest Regressor
+*	SVM Regressor
+>*	Linear Kernel
+>*	rbf Kernel
+>*	Polynomial Kernel
+*	Light GBM Regressor
 
 ### Model Comparison & Results Interpretation
 For price prediction, we started with a linear regression model with independent features available in the original dataset (which is our base model). Then we added the new features which we got from feature engineering to our base model and we were able to improve the overall accuracy for linear regression. Then we also evaluated the performance of tree based regressors as well as SVM regressors on this data. We saw that the tree based regressors were performing very well while the SVM based regressors took a lot of time to train and their performance was not as good as the random forest regressor. 
 As tree based regressors were performing better for our data, we tried a boosting based approach to maximize the accuracy. We used Light GBM which is a very popular Gradient Boosting method. It uses a leaf-based approach as compared to the branch-based approach seen in other boosting algorithms, which makes it faster and lighter on the memory requirements. Also, our dataset was having more than 10,000 records which was easily satisfying the basic requirement of LGBM.
 
 Some important insights that we could gather from this analysis are:
-•	When Accommodates increases by 1 person the Log price increases by 1.303 times 
-•	When Distance to station decreases by 1 km the Log price increases by 1.5236 times
-•	Room Type being Entire Home/Apartment increases Log price by 0.9192 times
+
+*	When Accommodates increases by 1 person the Log price increases by 1.303 times 
+*	When Distance to station decreases by 1 km the Log price increases by 1.5236 times
+*	Room Type being Entire Home/Apartment increases Log price by 0.9192 times
 
 ### Model robustness
 Robustness characterizes how effective a model is when it is being tested on a new independent but a similar dataset. We wanted to test the scope of expansion in business for a host into a new city without any listing price tool available for the new city. The evaluation metric used is the difference between the training and test error. The following steps illustrate how model robustness was tested:
@@ -95,12 +98,14 @@ Important features selected using the Random Forest for review score rating are 
 
 ## Conclusion
 In this study, we used different machine learning algorithms to predict Airbnb's listing price and rating.
-•	Linear Regression with engineered amenities, description and distance measures yielded the best LR model with a RMSE of $63.4. This showed the importance of adding external data to the existing set and engineering the features to predict the target even better.
-•	Light GBM Regression yields the lowest RMSE among all regression models, which is $56.44. Overall, all models have RMSE in the range of $56 – $69. Also, the most important features in our best model (LGBM – R) were the engineered variables – Distances, topics and sentiments.
-•	Among all the classifiers, we chose the best one in discriminative and tree-based classifier. Logistic regression and Random forest classifier yielded the best results for predicting the rating.
-•	Random forest is better than Logistic Regression over all class-wise metrics of Precision, Recall and F1. The relative error, distance of spillage in classified points is lesser with Random Forest.
+
+*	Linear Regression with engineered amenities, description and distance measures yielded the best LR model with a RMSE of $63.4. This showed the importance of adding external data to the existing set and engineering the features to predict the target even better.
+*	Light GBM Regression yields the lowest RMSE among all regression models, which is $56.44. Overall, all models have RMSE in the range of $56 – $69. Also, the most important features in our best model (LGBM – R) were the engineered variables – Distances, topics and sentiments.
+*	Among all the classifiers, we chose the best one in discriminative and tree-based classifier. Logistic regression and Random forest classifier yielded the best results for predicting the rating.
+*	Random forest is better than Logistic Regression over all class-wise metrics of Precision, Recall and F1. The relative error, distance of spillage in classified points is lesser with Random Forest.
 
 ## References
+
 1.	Torgo, L. and Gama, J. (2018). [online] Regression as Classification. Available at: 
 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.21.5374&rep=rep1&type=pdf [Accessed 20 Oct. 2018]. 
 2.	AirBnB listings in major US cities. (2018). Kaggle.com. Retrieved 22 October 2018, from https://www.kaggle.com/rudymizrahi/airbnb-listings-in-major-us-cities-deloitte-ml 
