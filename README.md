@@ -68,6 +68,8 @@ Since the listing price is continuous in nature, we used linear as well as tree 
 For price prediction, we started with a linear regression model with independent features available in the original dataset (which is our base model). Then we added the new features which we got from feature engineering to our base model and we were able to improve the overall accuracy for linear regression. Then we also evaluated the performance of tree based regressors as well as SVM regressors on this data. We saw that the tree based regressors were performing very well while the SVM based regressors took a lot of time to train and their performance was not as good as the random forest regressor. 
 As tree based regressors were performing better for our data, we tried a boosting based approach to maximize the accuracy. We used Light GBM which is a very popular Gradient Boosting method. It uses a leaf-based approach as compared to the branch-based approach seen in other boosting algorithms, which makes it faster and lighter on the memory requirements. Also, our dataset was having more than 10,000 records which was easily satisfying the basic requirement of LGBM.
 
+![Pricing_Modelling_Results](https://github.com/ManuGMathew/AML-Project---Airbnb/blob/master/images/price_results.png)
+
 Some important insights that we could gather from this analysis are:
 
 *	When Accommodates increases by 1 person the Log price increases by 1.303 times 
@@ -92,6 +94,7 @@ Looking at the distribution of the bins (as shown in Appendix), we see that the 
 
 ### Model Comparison & Results Interpretation
 From the model comparison below we can see that, Random Forest is giving better accuracy compared to other models. Random Forest is better than Logistic Regression over all metrics – Precision, Recall and F1 measure.
+![Rating_Modelling_Results](https://github.com/ManuGMathew/AML-Project---Airbnb/blob/master/images/rating_results.png)
 
 ### Feature interpretation and insights
 Important features selected using the Random Forest for review score rating are shown in below figure. As expected, price, proximity of the listing to station and other attractions, facilities such as Bathroom, bedroom and number of accommodates, host related parameters such as host response rate and days since hosted and amenities like 24-hour check-in play an important role in determining review score rating of the listing. We did hyperparameter tuning using GridsearchCV to select optimum parameters.
