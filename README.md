@@ -90,6 +90,23 @@ Looking at the distribution of the bins (as shown in Appendix), we see that the 
 ### Model Comparison & Results Interpretation
 From the model comparison below we can see that, Random Forest is giving better accuracy compared to other models. Random Forest is better than Logistic Regression over all metrics – Precision, Recall and F1 measure.
 
+### Feature interpretation and insights
+Important features selected using the Random Forest for review score rating are shown in below figure. As expected, price, proximity of the listing to station and other attractions, facilities such as Bathroom, bedroom and number of accommodates, host related parameters such as host response rate and days since hosted and amenities like 24-hour check-in play an important role in determining review score rating of the listing. We did hyperparameter tuning using GridsearchCV to select optimum parameters.
+
+## Conclusion
+In this study, we used different machine learning algorithms to predict Airbnb's listing price and rating.
+•	Linear Regression with engineered amenities, description and distance measures yielded the best LR model with a RMSE of $63.4. This showed the importance of adding external data to the existing set and engineering the features to predict the target even better.
+•	Light GBM Regression yields the lowest RMSE among all regression models, which is $56.44. Overall, all models have RMSE in the range of $56 – $69. Also, the most important features in our best model (LGBM – R) were the engineered variables – Distances, topics and sentiments.
+•	Among all the classifiers, we chose the best one in discriminative and tree-based classifier. Logistic regression and Random forest classifier yielded the best results for predicting the rating.
+•	Random forest is better than Logistic Regression over all class-wise metrics of Precision, Recall and F1. The relative error, distance of spillage in classified points is lesser with Random Forest.
+
+## References
+1.	Torgo, L. and Gama, J. (2018). [online] Regression as Classification. Available at: 
+http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.21.5374&rep=rep1&type=pdf [Accessed 20 Oct. 2018]. 
+2.	AirBnB listings in major US cities. (2018). Kaggle.com. Retrieved 22 October 2018, from https://www.kaggle.com/rudymizrahi/airbnb-listings-in-major-us-cities-deloitte-ml 
+3.	Inside Airbnb. Adding data to the debate. (2018). Inside Airbnb. Retrieved 22 October 2018, from http://insideairbnb.com/get-the-data.html 
+4.	11 Toughest Cities to Book an Airbnb (and Tips on When to Visit). (2015). Beyond Pricing Blog. Retrieved 22 October 2018, from https://blog.beyondpricing.com/11-toughest-citiesto-book-an-airbnb/ 
+
 
 
 
